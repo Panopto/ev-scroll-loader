@@ -3,7 +3,7 @@
  * https://github.com/jmpease/scroll-loader
  *
  * Copyright (c) 2013 Jim Pease
- * Licensed under the MIT license.
+ * Licensed under the MIT, GPL licenses.
  */
 
 (function($) {
