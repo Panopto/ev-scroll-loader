@@ -1,8 +1,11 @@
-/*! Scroll Loader - v0.1.0 - 2013-01-09
-* https://github.com/jmpease/scroll-loader
-* Copyright (c) 2013 Jim Pease; Licensed MIT, GPL */
-
-(function($) {
+/*
+ * ev-scroll-loader
+ * https://github.com/jmpease/ev-scroll-loader
+ *
+ * Copyright (c) 2013 Jim Pease
+ * Licensed under the MIT, GPL licenses.
+ */
+ (function($) {
 
   var defaults = {
     callback: function() {}
