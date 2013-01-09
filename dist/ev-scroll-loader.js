@@ -1,4 +1,4 @@
-/*! Scroll Loader - v0.1.0 - 2013-01-09
+/*! Ensemble Video Scroll Loader - v0.1.0 - 2013-01-09
 * https://github.com/jmpease/ev-scroll-loader
 * Copyright (c) 2013 Jim Pease; Licensed MIT, GPL */
 
@@ -42,7 +42,7 @@
     }
   };
 
-  $.fn.scrollLoader = function(method) {
+  $.fn.evScrollLoader = function(method) {
     if (methods[method]) {
       return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
     } else if (typeof method === 'object' || !method) {

@@ -1,4 +1,4 @@
-# Scroll Loader
+# Ensemble Video Scroll Loader
 
 jQuery plugin to load more content when user scrolls to bottom of content area.
 
@@ -15,7 +15,12 @@ In your web page:
 <script src="dist/ev-scroll-loader.min.js"></script>
 <script>
 jQuery(function($) {
-  $.awesome(); // "awesome"
+  $('.scrollMe').evScrollLoader({
+    height: 400,
+    callback: function() {
+      loadMoreStuff();
+    }
+  });
 });
 </script>
 ```

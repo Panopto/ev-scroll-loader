@@ -18,7 +18,7 @@
     var heights = [400, 800, null];
     $content.each(function(index, element) {
       loader.apply(element).then(function() {
-        $(element).scrollLoader({
+        $(element).evScrollLoader({
           height: heights[index],
           callback: loader
         });

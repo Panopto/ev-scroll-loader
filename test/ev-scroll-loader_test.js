@@ -22,36 +22,36 @@
       raises(block, [expected], [message])
   */
 
-  module('jQuery#scrollLoader', {
+  module('jQuery#evScrollLoader', {
     setup: function() {
       this.elems = $('#qunit-fixture').children();
     }
   });
 
   test('is chainable', 3, function() {
-    var $scrollLoaders = this.elems.scrollLoader();
-    strictEqual($scrollLoaders, this.elems, 'should be chainable');
-    strictEqual($scrollLoaders.scrollLoader('hideLoader'), this.elems, 'should be chainable');
-    strictEqual($scrollLoaders.scrollLoader('showLoader'), this.elems, 'should be chainable');
+    var $evScrollLoaders = this.elems.evScrollLoader();
+    strictEqual($evScrollLoaders, this.elems, 'should be chainable');
+    strictEqual($evScrollLoaders.evScrollLoader('hideLoader'), this.elems, 'should be chainable');
+    strictEqual($evScrollLoaders.evScrollLoader('showLoader'), this.elems, 'should be chainable');
   });
 
   test('check structure', 3, function() {
-    var $scrollLoaders = this.elems.scrollLoader();
-    ok($scrollLoaders.hasClass('scroll-content'), 'element should have "scroll-content" class');
-    ok($scrollLoaders.parent().hasClass('scrollWrap'), 'element should be wrapped by "scrollWrap" element');
-    ok($scrollLoaders.next().is('div.loader'), 'element should be followed by "loader"');
+    var $evScrollLoaders = this.elems.evScrollLoader();
+    ok($evScrollLoaders.hasClass('scroll-content'), 'element should have "scroll-content" class');
+    ok($evScrollLoaders.parent().hasClass('scrollWrap'), 'element should be wrapped by "scrollWrap" element');
+    ok($evScrollLoaders.next().is('div.loader'), 'element should be followed by "loader"');
   });
 
   test('check position', 1, function() {
-    strictEqual(this.elems.scrollLoader().closest('.scrollWrap').css('position'), 'relative', 'expected "relative" position');
+    strictEqual(this.elems.evScrollLoader().closest('.scrollWrap').css('position'), 'relative', 'expected "relative" position');
   });
 
   test('check scroll', 1, function() {
-    strictEqual(this.elems.scrollLoader().closest('.scrollWrap').css('overflow-y'), 'scroll', 'expected vertical scrolling');
+    strictEqual(this.elems.evScrollLoader().closest('.scrollWrap').css('overflow-y'), 'scroll', 'expected vertical scrolling');
   });
 
   test('check height', 3, function() {
-    var scrollLoaders = [];
+    var evScrollLoaders = [];
     var heights = [200, 600];
     var elems = this.elems;
     elems.each(function(index, element) {
@@ -59,35 +59,35 @@
       for (var i = 0; i < 10; i++) {
         $(element).append('<div style="height:40px;">test</div>');
       }
-      scrollLoaders[index] = $(element).scrollLoader({
+      evScrollLoaders[index] = $(element).evScrollLoader({
         height: heights[index]
       });
     });
-    var $first = scrollLoaders[0];
+    var $first = evScrollLoaders[0];
     // Expecting requested height to be less than scrollHeight
     strictEqual(Math.floor($first.closest('.scrollWrap').height()), heights[0] - 10, '');
-    var $second = scrollLoaders[1];
+    var $second = evScrollLoaders[1];
     // Expecting requested height to be greater than scrollHeight so scrollHeight should be used
     strictEqual(Math.floor($second.closest('.scrollWrap').height()), $second[0].scrollHeight - 10, '');
-    var $third = scrollLoaders[2];
+    var $third = evScrollLoaders[2];
     // Expecting scrollHeight to be used since requested height should be 'undefined'
     strictEqual(Math.floor($third.closest('.scrollWrap').height()), $third[0].scrollHeight - 10, '');  });
 
   test('check hide/show', 3, function() {
-    var $scrollLoaders = this.elems.scrollLoader();
+    var $evScrollLoaders = this.elems.evScrollLoader();
     // Make sure we don't start out hidden
-    ok($scrollLoaders.is(':visible'), 'expected scrollLoaders to be visible');
-    ok($scrollLoaders.scrollLoader('hideLoader').not(':visible'), 'expected scrollLoaders to be hidden');
-    ok($scrollLoaders.scrollLoader('showLoader').is(':visible'), 'expected scrollLoaders to be visible');
+    ok($evScrollLoaders.is(':visible'), 'expected evScrollLoaders to be visible');
+    ok($evScrollLoaders.evScrollLoader('hideLoader').not(':visible'), 'expected evScrollLoaders to be hidden');
+    ok($evScrollLoaders.evScrollLoader('showLoader').is(':visible'), 'expected evScrollLoaders to be visible');
   });
 
   test('check scroll loading', 3, function() {
-    var $scrollLoaders = this.elems.scrollLoader({
+    var $evScrollLoaders = this.elems.evScrollLoader({
       callback: function() {
         ok(true, 'expected callback to be called');
       }
     });
-    $scrollLoaders.each(function() {
+    $evScrollLoaders.each(function() {
       var $loader = $(this);
       var $wrap = $loader.closest('.scrollWrap');
       $wrap.scrollTop($wrap[0].scrollHeight);

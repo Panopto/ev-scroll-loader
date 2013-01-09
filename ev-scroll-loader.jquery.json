@@ -1,6 +1,6 @@
 {
   "name": "ev-scroll-loader",
-  "title": "Scroll Loader",
+  "title": "Ensemble Video Scroll Loader",
   "description": "jQuery plugin to load more content when user scrolls to bottom of content area.",
   "version": "0.1.0",
   "homepage": "https://github.com/jmpease/ev-scroll-loader",
