@@ -1,4 +1,4 @@
-# Ensemble Video Scroll Loader
+# Ensemble Video jQuery Scroll Loader Plugin
 
 jQuery plugin to load more content when user scrolls to bottom of content area.
 

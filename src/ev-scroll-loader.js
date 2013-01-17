@@ -2,8 +2,8 @@
  * ev-scroll-loader
  * https://github.com/jmpease/ev-scroll-loader
  *
- * Copyright (c) 2013 Symphony Video
- * Licensed under the MIT, GPL licenses.
+ * Copyright (c) 2013 Symphony Video, Inc.
+ * Licensed under the MIT, GPL-2.0 licenses.
  */
  (function($) {
 
