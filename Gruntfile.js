@@ -15,6 +15,9 @@ module.exports = function(grunt) {
             ' * Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %>\n' +
             ' */\n',
         // Task configuration.
+        clean: {
+            files: ['dist']
+        },
         concat: {
             options: {
                 banner: '<%= banner %>',
@@ -77,6 +80,7 @@ module.exports = function(grunt) {
     });
 
     // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -85,7 +89,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
     grunt.registerTask('demo', ['connect', 'watch']);
 
 };
