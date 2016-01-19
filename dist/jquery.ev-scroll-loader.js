@@ -1,58 +1,64 @@
 /**
- * ev-scroll-loader 1.0.0 2016-01-15
+ * ev-scroll-loader 1.0.0 2016-01-19
  * Ensemble Video jQuery Scroll Loader Plugin
  * https://github.com/ensembleVideo/ev-scroll-loader
  * Copyright (c) 2016 Symphony Video, Inc.
  * Licensed MIT, GPL-2.0
  */
-(function($) {
+(function(factory) {
+  if (typeof module === "object" && typeof module.exports === "object") {
+    factory(require("jquery"));
+  } else {
+    factory(jQuery);
+  }
+})(function($) {
 
-    'use strict';
+  'use strict';
 
-    var defaults = {
-        callback: function() {}
-    };
+  var defaults = {
+    callback: function() {}
+  };
 
-    var methods = {
-        init: function(options) {
-            var settings = $.extend({}, defaults, options);
-            return this.each(function() {
-                var $this = $(this);
-                $this.addClass('scroll-content');
-                var $wrap = $this.wrap('<div class=\"scrollWrap\"/>').closest('.scrollWrap');
-                $wrap.append('<div class="loader"></div>');
-                var scrollHeight = this.scrollHeight;
-                var setHeight = settings.height || scrollHeight;
-                var wrapHeight = Math.min(setHeight, scrollHeight) - 10;
-                $wrap.css({
-                    'position': 'relative',
-                    'height': wrapHeight + 'px',
-                    'overflow-y': 'scroll'
-                }).scroll(function() {
-                    if ($wrap.scrollTop() === $wrap[0].scrollHeight - wrapHeight) {
-                        settings.callback.apply($this[0]);
-                    }
-                });
-            });
-        },
-        showLoader: function() {
-            var $wrap = $(this).closest('.scrollWrap');
-            $('.loader', $wrap).show();
-            return this;
-        },
-        hideLoader: function() {
-            var $wrap = $(this).closest('.scrollWrap');
-            $('.loader', $wrap).hide();
-            return this;
-        }
-    };
+  var methods = {
+    init: function(options) {
+      var settings = $.extend({}, defaults, options);
+      return this.each(function() {
+        var $this = $(this);
+        $this.addClass('scroll-content');
+        var $wrap = $this.wrap('<div class=\"scrollWrap\"/>').closest('.scrollWrap');
+        $wrap.append('<div class="loader"></div>');
+        var scrollHeight = this.scrollHeight;
+        var setHeight = settings.height || scrollHeight;
+        var wrapHeight = Math.min(setHeight, scrollHeight) - 10;
+        $wrap.css({
+          'position': 'relative',
+          'height': wrapHeight + 'px',
+          'overflow-y': 'scroll'
+        }).scroll(function() {
+          if ($wrap.scrollTop() === $wrap[0].scrollHeight - wrapHeight) {
+            settings.callback.apply($this[0]);
+          }
+        });
+      });
+    },
+    showLoader: function() {
+      var $wrap = $(this).closest('.scrollWrap');
+      $('.loader', $wrap).show();
+      return this;
+    },
+    hideLoader: function() {
+      var $wrap = $(this).closest('.scrollWrap');
+      $('.loader', $wrap).hide();
+      return this;
+    }
+  };
 
-    $.fn.evScrollLoader = function(method) {
-        if (methods[method]) {
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
-        }
-    };
+  $.fn.evScrollLoader = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
+    }
+  };
 
-}(jQuery));
+});
