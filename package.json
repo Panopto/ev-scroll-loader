@@ -2,6 +2,7 @@
   "name": "ev-scroll-loader",
   "version": "1.0.0",
   "description": "Ensemble Video jQuery Scroll Loader Plugin",
+  "main": "./dist/jquery.ev-scroll-loader.js",
   "homepage": "https://github.com/ensembleVideo/ev-scroll-loader",
   "keywords": [
     "jquery-plugin"

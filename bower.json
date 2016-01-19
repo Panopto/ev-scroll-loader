@@ -1,6 +1,6 @@
 {
   "name": "ev-scroll-loader",
-  "main": "./dist/ev-scroll-loader.js",
+  "main": "./dist/jquery.ev-scroll-loader.js",
   "ignore": [
     "**/.*",
     "node_modules",
