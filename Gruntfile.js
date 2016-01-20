@@ -14,7 +14,7 @@ module.exports = function (grunt) {
       ' * <%= pkg.description %>\n' +
       '<%= pkg.homepage ? " * " + pkg.homepage + "\\n" : "" %>' +
       ' * Copyright (c) <%= grunt.template.today("yyyy") %> Symphony Video, Inc.\n' +
-      ' * Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %>\n' +
+      ' * Licensed <%= pkg.license %>\n' +
       ' */\n',
     // Task configuration.
     clean: {

@@ -3,7 +3,7 @@
  * Ensemble Video jQuery Scroll Loader Plugin
  * https://github.com/ensembleVideo/ev-scroll-loader
  * Copyright (c) 2016 Symphony Video, Inc.
- * Licensed MIT, GPL-2.0
+ * Licensed (MIT AND GPL-2.0)
  */
 (function(factory) {
   if (typeof define === 'function' && define.amd) {

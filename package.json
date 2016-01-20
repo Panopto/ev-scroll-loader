@@ -13,16 +13,7 @@
     "url": "https://github.com/jmpease"
   },
   "repository": "ensembleVideo/ev-scroll-loader",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/ensembleVideo/ev-scroll-loader/blob/master/LICENSE-MIT"
-    },
-    {
-      "type": "GPL-2.0",
-      "url": "https://github.com/ensembleVideo/ev-scroll-loader/blob/master/LICENSE-GPL-2.0"
-    }
-  ],
+  "license": "(MIT AND GPL-2.0)",
   "scripts": {
     "test": "grunt"
   },
