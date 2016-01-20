@@ -1,13 +1,15 @@
 /**
- * ev-scroll-loader 1.0.0 2016-01-19
+ * ev-scroll-loader 1.0.0 2016-01-20
  * Ensemble Video jQuery Scroll Loader Plugin
  * https://github.com/ensembleVideo/ev-scroll-loader
  * Copyright (c) 2016 Symphony Video, Inc.
  * Licensed MIT, GPL-2.0
  */
 (function(factory) {
-  if (typeof module === "object" && typeof module.exports === "object") {
-    factory(require("jquery"));
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory);
+  } else if (typeof module === 'object' && typeof module.exports === 'object') {
+    factory(require('jquery'));
   } else {
     factory(jQuery);
   }
