@@ -17,13 +17,14 @@
 
     $(document).ready(function() {
         var $content = $('.content');
-        var heights = [400, 800, null];
-        $content.each(function(index, element) {
-            loader.apply(element).then(function() {
-                $(element).evScrollLoader({
-                    height: heights[index],
-                    callback: loader
-                });
+        loader.apply($content[0]).then(function() {
+            $(window).resize(function() {
+                $('.contentWrap').height($(this).height() * 0.8);
+                $content.trigger('evScrollLoader.resize');
+            });
+            $(window).trigger('resize');
+            $content.evScrollLoader({
+                callback: loader
             });
         });
     });
