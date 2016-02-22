@@ -1,5 +1,5 @@
 /**
- * ev-scroll-loader 1.0.0 2016-02-19
+ * ev-scroll-loader 1.0.0 2016-02-22
  * Ensemble Video jQuery Scroll Loader Plugin
  * https://github.com/ensembleVideo/ev-scroll-loader
  * Copyright (c) 2016 Symphony Video, Inc.
@@ -27,21 +27,36 @@
         init: function(options) {
             var settings = $.extend({}, defaults, options);
             return this.each(function() {
-                var $this = $(this);
+                var $this = $(this),
+                    $wrap = $this.wrap('<div class=\"scrollWrap\"/>').closest('.scrollWrap'),
+                    scrollHeight,
+                    parentHeight,
+                    setHeight,
+                    wrapHeight,
+                    handleHeights = function() {
+                        scrollHeight = $this[0].scrollHeight;
+                        parentHeight = $wrap.parent().height();
+                        // If a height was set, use that, otherwise height of parent, but always take scrollHeight if it's smaller
+                        setHeight = settings.height || Math.min(scrollHeight, parentHeight);
+                        wrapHeight = Math.min(setHeight, scrollHeight) - 10;
+                        $wrap.css({
+                            'position': 'relative',
+                            'height': wrapHeight + 'px',
+                            'overflow-y': 'scroll'
+                        });
+                    };
                 $this.addClass('scroll-content');
-                var $wrap = $this.wrap('<div class=\"scrollWrap\"/>').closest('.scrollWrap');
                 $wrap.append('<div class="loader"></div>');
-                var scrollHeight = this.scrollHeight;
-                var setHeight = settings.height || scrollHeight;
-                var wrapHeight = Math.min(setHeight, scrollHeight) - 10;
-                $wrap.css({
-                    'position': 'relative',
-                    'height': wrapHeight + 'px',
-                    'overflow-y': 'scroll'
-                }).scroll(function() {
+                handleHeights();
+                $wrap.scroll(function() {
+                    // When we have scrolled to the bottom of our content, call the callback
                     if ($wrap.scrollTop() === $wrap[0].scrollHeight - wrapHeight) {
                         settings.callback.apply($this[0]);
                     }
+                });
+                // Custom event clients can call to force re-calculation of heights
+                $this.on('evScrollLoader.resize', function() {
+                    handleHeights();
                 });
             });
         },
