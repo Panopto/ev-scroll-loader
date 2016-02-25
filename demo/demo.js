@@ -2,28 +2,44 @@
 
     'use strict';
 
-    var loader = function() {
-        var $this = $(this);
-        return $.ajax({
-            url: 'demo.json',
-            dataType: 'json',
-            success: function(data, status, xhr) {
-                $.each(data.data, function(index, item) {
-                    $this.append('<div class="item">' + item + '</div>');
+    var getLoader = function(max) {
+        var count = 0;
+        return function() {
+            var $this = this;
+            if (count === max) {
+                $this.evScrollLoader('hideLoader');
+                return $.Deferred().resolve();
+            } else {
+                ++count;
+                return $.ajax({
+                    url: 'demo.json',
+                    dataType: 'json',
+                    success: function(data, status, xhr) {
+                        $.each(data.data, function(index, item) {
+                            $this.append('<div class="item">' + item + '</div>');
+                        });
+                    }
                 });
             }
-        });
+        };
     };
 
     $(document).ready(function() {
-        var $content = $('.content');
-        var heights = [400, 800, null];
+        var $content = $('.content'),
+            $contentWrap = $('.contentWrap'),
+            resize = function() {
+                $contentWrap.height($(window).height() * 0.8);
+            };
+        $(window).resize(resize);
+        var heights = ['80%', 400, 800];
         $content.each(function(index, element) {
-            loader.apply(element).then(function() {
+            var loader = getLoader(10);
+            loader.apply($(element)).then(function() {
                 $(element).evScrollLoader({
                     height: heights[index],
-                    callback: loader
+                    onScrolled: loader
                 });
+                resize();
             });
         });
     });

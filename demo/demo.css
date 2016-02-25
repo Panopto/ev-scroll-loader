@@ -12,12 +12,18 @@
     height: 60px;
 }
 
-div.content {
+.contentWrap {
+    position: relative;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 2em;
+}
+
+.content {
     background-color: #EFEFEF;
     padding: 1em;
 }
 
-div.content .item {
+.content .item {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     margin: 0.4em 0;

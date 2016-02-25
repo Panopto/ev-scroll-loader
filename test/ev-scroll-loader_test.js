@@ -62,13 +62,13 @@
         });
         var $first = evScrollLoaders[0];
         // Expecting requested height to be less than scrollHeight
-        strictEqual(Math.floor($first.closest('.scrollWrap').height()), heights[0] - 10, '');
+        strictEqual(Math.floor($first.closest('.scrollWrap').height()), heights[0], '');
         var $second = evScrollLoaders[1];
         // Expecting requested height to be greater than scrollHeight so scrollHeight should be used
-        strictEqual(Math.floor($second.closest('.scrollWrap').height()), $second[0].scrollHeight - 10, '');
+        strictEqual(Math.floor($second.closest('.scrollWrap').height()), $second[0].scrollHeight, '');
         var $third = evScrollLoaders[2];
         // Expecting scrollHeight to be used since requested height should be 'undefined'
-        strictEqual(Math.floor($third.closest('.scrollWrap').height()), $third[0].scrollHeight - 10, '');
+        strictEqual(Math.floor($third.closest('.scrollWrap').height()), $third[0].scrollHeight, '');
     });
 
     test('check hide/show', 3, function() {
@@ -81,8 +81,8 @@
 
     test('check scroll loading', 3, function() {
         var $evScrollLoaders = this.elems.evScrollLoader({
-            callback: function() {
-                ok(true, 'expected callback to be called');
+            onScrolled: function() {
+                ok(true, 'expected onScrolled to be called');
             }
         });
         $evScrollLoaders.each(function() {
