@@ -16,7 +16,11 @@
                     dataType: 'json',
                     success: function(data, status, xhr) {
                         $.each(data.data, function(index, item) {
-                            $this.append('<div class="item">' + item + '</div>');
+                            var $wrappedItem = $('<div class="item">' + item + '</div>');
+                            $this.append($wrappedItem);
+                            $wrappedItem.click(function() {
+                                $this.evScrollLoader('scrollTo', $wrappedItem.offset().top);
+                            });
                         });
                     }
                 });

@@ -47,6 +47,11 @@
             var $wrap = $(this).closest('.scrollWrap');
             $('.loader', $wrap).hide();
             return this;
+        },
+        scrollTo: function(offset) {
+            var $wrap = $(this).closest('.scrollWrap');
+            $wrap.scrollTop(offset - $wrap.offset().top + $wrap.scrollTop());
+            return this;
         }
     };
 
