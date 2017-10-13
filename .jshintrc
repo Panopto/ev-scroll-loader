@@ -1,19 +1,20 @@
 {
-  "node": true,
-  "browser": true,
-  "esnext": true,
-  "bitwise": true,
-  "camelcase": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
-  "indent": 4,
   "latedef": true,
   "newcap": true,
   "noarg": true,
-  "quotmark": "single",
+  "sub": true,
   "undef": true,
-  "unused": false,
-  "strict": true,
-  "predef": ["jQuery", "define"]
+  "boss": true,
+  "eqnull": true,
+  "node": true,
+  "browser": true,
+  "quotmark": "single",
+  "predef": [
+    "define",
+    "jQuery",
+    "QUnit"
+  ]
 }
