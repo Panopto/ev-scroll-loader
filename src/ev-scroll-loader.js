@@ -13,6 +13,7 @@
     'use strict';
 
     var defaults = {
+        scrollStyle: 'scroll',
         onScrolled: function() {}
     };
 
@@ -28,7 +29,7 @@
                     'position': 'relative',
                     'height': settings.height ? (typeof settings.height === 'number' ? settings.height + 'px' : settings.height) : '100%',
                     'max-height': $this[0].scrollHeight + 'px',
-                    'overflow-y': 'scroll'
+                    'overflow-y': settings.scrollStyle
                 });
                 $wrap.scroll(function() {
                     // When we have scrolled to the bottom of our content, call the onScrolled handler.  We subtract a pixel below to account for rounding.

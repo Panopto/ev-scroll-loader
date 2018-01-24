@@ -41,6 +41,7 @@
             loader.apply($(element)).then(function() {
                 $(element).evScrollLoader({
                     height: heights[index],
+                    scrollStyle: 'overlay',
                     onScrolled: loader
                 });
                 resize();

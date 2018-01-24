@@ -1,8 +1,8 @@
 /**
- * ev-scroll-loader 1.1.0 2017-10-13
+ * ev-scroll-loader 1.2.0 2018-01-24
  * Ensemble Video jQuery Scroll Loader Plugin
  * https://github.com/ensembleVideo/ev-scroll-loader
- * Copyright (c) 2017 Symphony Video, Inc.
+ * Copyright (c) 2018 Symphony Video, Inc.
  * Licensed (MIT AND GPL-2.0)
  */
 (function(factory) {
@@ -20,6 +20,7 @@
     'use strict';
 
     var defaults = {
+        scrollStyle: 'scroll',
         onScrolled: function() {}
     };
 
@@ -35,7 +36,7 @@
                     'position': 'relative',
                     'height': settings.height ? (typeof settings.height === 'number' ? settings.height + 'px' : settings.height) : '100%',
                     'max-height': $this[0].scrollHeight + 'px',
-                    'overflow-y': 'scroll'
+                    'overflow-y': settings.scrollStyle
                 });
                 $wrap.scroll(function() {
                     // When we have scrolled to the bottom of our content, call the onScrolled handler.  We subtract a pixel below to account for rounding.
